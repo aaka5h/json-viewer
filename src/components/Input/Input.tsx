@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
+import './Input.css';
 
 const JsonInputComponent = (props) => {
     return (
-        <>
-            <textarea ref={props.textField}></textarea>
-            <button onClick={props.onParseClick}>Parse</button>
-        </>
+        <div className={'wrapper'}>
+            <textarea className={'text-area'} ref={props.textField} />
+            <button className={'parse-button'} onClick={props.onParseClick}>Parse</button>
+        </div>
     );
 };
 

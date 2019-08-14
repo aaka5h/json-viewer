@@ -14,8 +14,11 @@ export class ObjectTraveller implements JsonTravellerInterface {
     }
 
     next(): JsonItemInterface | null {
-        this.currentItem = this.item.iterator.next();
-        if (!this.currentItem) this.isEnd = true;
+        this.currentItem = this.item.value.iterator.next();
+        if (!this.currentItem) {
+            this.isEnd = true;
+            return null;
+        }
         return this.currentItem;
     }
 

@@ -14,13 +14,26 @@ export class JsonItem implements JsonItemInterface {
         key: string | null,
         value: any,
     ) {
+
+        if (Array.isArray(value) && value.length && value[0].constructor.name === this.constructor.name) {
+            this.key = key;
+            this.value = value;
+            this.iterator = new ArrayTraveller(this);
+            return;
+        }
         if (typeof value !== 'object') {
             this.key = key;
             this.value = value;
             this.iterator = new NoIterator(this);
         } else if (Array.isArray(value)) {
             this.key = key;
-            this.value = value;
+            const result: JsonItemInterface[] = [];
+            let i=0;
+            for (let v of value){
+                result.push(new JsonItem(i.toString(), v));
+                i++;
+            }
+            this.value = result.length? new JsonItem(null, result): new JsonItem(null, [{t: 1}]);
             this.iterator = new ArrayTraveller(this);
         } else if (value) {
             this.key = key;
@@ -34,7 +47,7 @@ export class JsonItem implements JsonItemInterface {
         } else {
             this.key = key;
             this.value = null;
-            this.iterator = new ObjectTraveller(this);
+            // this.iterator = new ObjectTraveller(this);
         }
     }
 
