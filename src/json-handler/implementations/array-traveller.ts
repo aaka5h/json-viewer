@@ -9,6 +9,7 @@ export default class ArrayTraveller implements JsonTravellerInterface {
 
     constructor(private item: JsonItemInterface) {
         this.rootItem = this.currentItem = this.item.value && this.item.value[0];
+        this.isEnd = (this._index) === this.item.value.length;
     }
 
     next(): JsonItemInterface | null {

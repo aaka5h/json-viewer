@@ -3,6 +3,7 @@ import { JsonTravellerInterface } from '../json-traveller.interface';
 import NoIterator from './no-iterator';
 import { ObjectTraveller } from './object-traveller';
 import ArrayTraveller from './array-traveller';
+import { EmptyItem } from './empty-item';
 
 export class JsonItem implements JsonItemInterface {
 
@@ -28,12 +29,12 @@ export class JsonItem implements JsonItemInterface {
         } else if (Array.isArray(value)) {
             this.key = key;
             const result: JsonItemInterface[] = [];
-            let i=0;
-            for (let v of value){
+            let i = 0;
+            for (let v of value) {
                 result.push(new JsonItem(i.toString(), v));
                 i++;
             }
-            this.value = result.length? new JsonItem(null, result): new JsonItem(null, [{t: 1}]);
+            this.value = result.length ? new JsonItem(null, result) : new EmptyItem(null,  'array');
             this.iterator = new ArrayTraveller(this);
         } else if (value) {
             this.key = key;
@@ -42,7 +43,7 @@ export class JsonItem implements JsonItemInterface {
                 if (value.hasOwnProperty(k))
                     result.push(new JsonItem(k, value[k]));
             });
-            this.value = new JsonItem(null, result);
+            this.value = result.length ? new JsonItem(null, result) : new EmptyItem(null, 'object');
             this.iterator = new ObjectTraveller(this);
         } else {
             this.key = key;
