@@ -3,7 +3,7 @@ import JsonItemInterface from '../../../json-handler/types/json-item.interface';
 import './JsonTreeItem.css';
 
 const LeafItem = ({title, value}) => (
-    <div className={'leaf-tree-item'} style={{display: 'block'}}>{title}:{value.toString()}<br/></div>);
+    <div className={'leaf-tree-item'} style={{display: 'block'}}>{title}: {value.toString()}<br/></div>);
 
 const JsonTreeItem = ({item, title}: { item: JsonItemInterface, title: any }) => {
     const print = [];
@@ -19,7 +19,7 @@ const JsonTreeItem = ({item, title}: { item: JsonItemInterface, title: any }) =>
         <>
             {
                 title ?
-                    (<div className={'json-item'}>{title} : {print}</div>) : print
+                    <div className={'json-item'}>{title} : {'{'} {print} {'}'}</div> : print
             }
         </>
     );
