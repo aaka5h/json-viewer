@@ -7,6 +7,34 @@
 ol {
     list-style: none;
 }
- ul{
-     list-style: none;
- }
+
+ul {
+    list-style: none;
+}
+
+.key-link {
+}
+
+.key-link.leaf-node:before {
+    content: '' !important;
+}
+
+.key-link.expanded:before {
+    content: '▼';
+}
+
+
+.key-link.minimized:before {
+    content: '▶';
+}
+
+.minimized-item {
+    text-decoration: underline;
+}
+.minimized-item:hover {
+    cursor: pointer;
+}
+
+.minimized-item:after {
+    content: ' items';
+}

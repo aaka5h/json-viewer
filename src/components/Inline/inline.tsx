@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import * as React from 'react';
-import Item from './Item/Item';
+import { JsonView } from './Item/Item';
 
 interface Options {
   [key: string]: any;
@@ -23,10 +23,7 @@ export default class InlineComponent extends Component<PropType> {
     let j = {...this.props.json} as any;
     return (
       <div>
-        {
-          // @ts-ignore
-          <Item json={j} />
-        }
+        <JsonView json={j} />
       </div>
     );
     // return <pre>{JSON.stringify(j,null, 2)}</pre>;
