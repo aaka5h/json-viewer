@@ -10,7 +10,7 @@ const CreateArray = ({json, toggle, minimized, ...props}: {
     const items = [];
     for (let i = 0; i < json.length; i++) {
       items.push(<li key={i}>
-        <Item json={json[i]} />
+        <JsonItem json={json[i]} />
         {i < json.length - 1 && ','}
       </li>);
     }
@@ -40,7 +40,7 @@ const CreateObject = ({json, toggle, minimized, ...props}: {
         items
           .push(
             (<li key={key}>
-              <Item json={json[key]} keyString={key} />
+              <JsonItem json={json[key]} keyString={key} />
               {--keyCount > 0 && ','}
             </li>),
           );
@@ -62,7 +62,7 @@ const CreateObject = ({json, toggle, minimized, ...props}: {
 };
 
 
-const Item = (props: {
+const JsonItem = (props: {
   json: any,
   className?: string,
   keyString?: string,
@@ -108,5 +108,5 @@ const Item = (props: {
 };
 
 export {
-  Item as JsonView,
+  JsonItem as JsonView,
 };

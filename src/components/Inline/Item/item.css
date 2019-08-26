@@ -13,6 +13,7 @@ ul {
 }
 
 .key-link {
+    cursor: pointer;
 }
 
 .key-link.leaf-node:before {
