@@ -16,6 +16,10 @@ ul {
     cursor: pointer;
 }
 
+.key-link.leaf-node{
+    cursor: default;
+}
+
 .key-link.leaf-node:before {
     content: '' !important;
 }

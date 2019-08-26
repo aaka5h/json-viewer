@@ -1,40 +1,31 @@
 import { Component } from 'react';
 import * as React from 'react';
 import { JsonView } from './Item/json-item';
+import { Options } from './options';
 
-interface Options {
-  [key: string]: any;
-
-  minimizableRoot?: boolean,
-}
 
 interface PropType {
   json: object;
   options?: Options;
 }
 
-interface stateType {
-  options: Options;
+interface StateType {
 }
 
+const defaultOptions: Options = {
+  rootCollapsible: false,
+  withQuotes: false,
+  collapseNodes: false,
+};
 
-const defaultOptions: Options = {};
-
-export default class JsonViewerComponent extends Component<PropType, stateType> {
-
-  state = {
-    options: {},
-  }
-
-  constructor(props) {
-    super(props);
-  }
+export default class JsonViewerComponent extends Component<PropType, StateType> {
 
   render() {
+    const opt = Object.assign({}, this.props.options, defaultOptions);
     let j = { ...this.props.json } as any;
     return (
       <div>
-        <JsonView json={j} />
+        <JsonView json={j} options={opt} isRoot={true} />
       </div>
     );
   }
