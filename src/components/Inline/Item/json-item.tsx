@@ -36,7 +36,7 @@ class JsonItem extends PureComponent<PropType, any> {
 
   constructor(props) {
     super(props);
-    this.state.minimized = !(this.props.isRoot && this.props.options.rootCollapsible);
+    if(props.isRoot && !props.options.rootCollapsible && props.options.collapseNodes) this.state.minimized = false;
   }
 
   componentDidMount(): void {
@@ -77,7 +77,7 @@ class JsonItem extends PureComponent<PropType, any> {
       <>
         <span
           onClick={() => {
-            if (!this.state.isLeaf && !(this.props.isRoot && this.props.options.rootCollapsible)) this.changeMinimized(!minimized)
+            if (this.state.isLeaf || (this.props.isRoot && !this.props.options.rootCollapsible)) return; this.changeMinimized(!minimized)
           }}
           className={
             ['key-link',

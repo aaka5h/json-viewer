@@ -13,7 +13,7 @@ interface StateType {
 }
 
 const defaultOptions: Options = {
-  rootCollapsible: false,
+  rootCollapsible: true,
   withQuotes: false,
   collapseNodes: false,
 };
