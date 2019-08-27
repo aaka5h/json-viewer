@@ -1,8 +1,5 @@
 export interface Options {
   rootCollapsible?: boolean;
-  withQuotes?: boolean;
+  keyWithQuotes?: boolean;
   collapseNodes?: boolean;
-
-  [key: string]: any;
-
 }

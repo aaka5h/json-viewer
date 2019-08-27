@@ -19,7 +19,12 @@ interface PropType {
   isRoot?: boolean,
 }
 
-class JsonItem extends PureComponent<PropType, any> {
+interface StateType {
+  minimized: boolean;
+  isLeaf: boolean;
+}
+
+class JsonItem extends PureComponent<PropType, StateType> {
 
   state = {
     minimized: this.props.options.collapseNodes,
@@ -36,7 +41,7 @@ class JsonItem extends PureComponent<PropType, any> {
 
   constructor(props) {
     super(props);
-    if(props.isRoot && !props.options.rootCollapsible && props.options.collapseNodes) this.state.minimized = false;
+    if (props.isRoot && !props.options.rootCollapsible && props.options.collapseNodes) this.state.minimized = false;
   }
 
   componentDidMount(): void {
@@ -57,7 +62,7 @@ class JsonItem extends PureComponent<PropType, any> {
 
   render() {
 
-    let { json } = this.props;
+    let { json, options } = this.props;
     const { minimized, isLeaf: leaf } = this.state;
     let result: JSX.Element = null;
 
@@ -77,14 +82,16 @@ class JsonItem extends PureComponent<PropType, any> {
       <>
         <span
           onClick={() => {
-            if (this.state.isLeaf || (this.props.isRoot && !this.props.options.rootCollapsible)) return; this.changeMinimized(!minimized)
+            if (this.state.isLeaf || (this.props.isRoot && !options.rootCollapsible)) return;
+            this.changeMinimized(!minimized)
           }}
           className={
             ['key-link',
               minimized ? 'minimized' : 'expanded',
               leaf && 'leaf-node',
-              this.props.isRoot && this.props.options.rootCollapsible ? 'disable-root-toggle' : null,
-            ].join(' ')}
+              this.props.isRoot && options.rootCollapsible ? 'disable-root-toggle' : null,
+            ].join(' ')
+          }
         >
           {this.props.keyString && `${this.props.keyString}: `}
         </span>
