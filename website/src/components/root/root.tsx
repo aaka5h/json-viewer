@@ -1,9 +1,9 @@
 import { Component, ReactNode, RefObject } from 'react';
 import * as React from 'react';
-import JsonParser from '../../json-handler/implementations/json-parser';
+import JsonParser from '../../../../packages/json-handler/implementations/json-parser';
 import JsonInputComponent from '../Input/Input';
-import JsonItemInterface from '../../json-handler/types/json-item.interface';
-import JsonViewerComponent from '../Inline/json-viewer';
+import JsonItemInterface from '../../../../packages/json-handler/types/json-item.interface';
+import JsonViewerComponent from '../../../../packages/components/Inline/json-viewer';
 
 interface stateType {
   mJson: JsonItemInterface;

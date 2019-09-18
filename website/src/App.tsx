@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import RootComponent from './components/root/root';
 import Layout from './components/Layout/Layout.component';
+import RootComponent from './components/root/root';
 
 function App() {
     return (
