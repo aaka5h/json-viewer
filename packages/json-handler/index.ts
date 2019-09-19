@@ -1,4 +1,4 @@
-import JsonParser from "./implementations/json-parser";
+import JsonParser from './implementations/json-parser';
 
-export {JsonParser};
-export *  from "./types/json-item.interface";
+export { JsonParser };
+export *  from './types/json-item.interface';

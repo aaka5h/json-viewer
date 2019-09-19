@@ -1,4 +1,4 @@
-export interface Options {
+export interface JsonViewerOptions {
   rootCollapsible?: boolean;
   keyWithQuotes?: boolean;
   collapseNodes?: boolean;

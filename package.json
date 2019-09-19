@@ -1,6 +1,7 @@
 {
-  "name": "json-viewer",
-  "version": "0.1.0",
+  "name": "json-viewer-react",
+  "version": "1.0.0",
+  "description": "A simple Json Viewer built on react",
   "private": true,
   "peerDependencies": {
     "react": ">=16.9.0"
@@ -11,7 +12,10 @@
     "react-scripts": "3.1.0"
   },
   "scripts": {
-    "build": "node ./scripts/build.js"
+    "build": "rollup -c",
+    "clean": "rimraf lib dist",
+    "start-build": "npm run clean && npm run build",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,6 +37,11 @@
     "@types/node": "^12.7.1",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.21.4",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.24.2",
     "typescript": "^3.5.3"
   }
 }

@@ -1,24 +1,20 @@
-import { Component } from 'react';
 import * as React from 'react';
 import { JsonView } from './Item/json-item';
-import { Options } from './options';
+import { JsonViewerOptions } from './jsonViewerOptions';
 
 
 interface PropType {
   json: object;
-  options?: Options;
+  options?: JsonViewerOptions;
 }
 
-interface StateType {
-}
-
-const defaultOptions: Options = {
+const defaultOptions: JsonViewerOptions = {
   rootCollapsible: true,
   keyWithQuotes: false,
   collapseNodes: false,
 };
 
-export default class JsonViewerComponent extends Component<PropType, StateType> {
+export default class JsonViewerComponent extends React.Component<PropType> {
 
   render() {
     const opt = Object.assign({}, this.props.options, defaultOptions);

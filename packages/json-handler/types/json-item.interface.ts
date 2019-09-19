@@ -1,6 +1,6 @@
 import { JsonTravellerInterface } from '../json-traveller.interface';
 
-export default interface JsonItemInterface {
+export default interface  JsonItemInterface {
     iterator: JsonTravellerInterface;
 
     value: any;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './item.css'
-import { PureComponent } from 'react';
-import { Options } from '../options';
+// import './item.css'
+// import React, { PureComponent } from 'react';
+import { JsonViewerOptions } from '../jsonViewerOptions';
 
 const displayNoneWhen = function (func) {
   let isIt = !!(typeof func === 'function' ? func() : func);
@@ -14,7 +14,7 @@ const displayNoneWhen = function (func) {
 
 interface PropType {
   json: any,
-  options: Options,
+  options: JsonViewerOptions,
   keyString?: string,
   isRoot?: boolean,
 }
@@ -24,7 +24,7 @@ interface StateType {
   isLeaf: boolean;
 }
 
-class JsonItem extends PureComponent<PropType, StateType> {
+class JsonItem extends React.PureComponent<PropType, StateType> {
 
   state = {
     minimized: this.props.options.collapseNodes,
